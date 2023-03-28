@@ -1,7 +1,8 @@
 var Geosuggest = (function (React) {
     'use strict';
 
-    function _interopNamespaceDefault(e) {
+    function _interopNamespace(e) {
+        if (e && e.__esModule) return e;
         var n = Object.create(null);
         if (e) {
             Object.keys(e).forEach(function (k) {
@@ -14,13 +15,13 @@ var Geosuggest = (function (React) {
                 }
             });
         }
-        n.default = e;
+        n["default"] = e;
         return Object.freeze(n);
     }
 
-    var React__namespace = /*#__PURE__*/_interopNamespaceDefault(React);
+    var React__namespace = /*#__PURE__*/_interopNamespace(React);
 
-    /******************************************************************************
+    /*! *****************************************************************************
     Copyright (c) Microsoft Corporation.
 
     Permission to use, copy, modify, and/or distribute this software for any
@@ -44,8 +45,6 @@ var Geosuggest = (function (React) {
     };
 
     function __extends(d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -64,70 +63,75 @@ var Geosuggest = (function (React) {
 
     var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
-    var classnamesExports = {};
-    var classnames$1 = {
-      get exports(){ return classnamesExports; },
-      set exports(v){ classnamesExports = v; },
-    };
+    function createCommonjsModule(fn, basedir, module) {
+    	return module = {
+    		path: basedir,
+    		exports: {},
+    		require: function (path, base) {
+    			return commonjsRequire(path, (base === undefined || base === null) ? module.path : base);
+    		}
+    	}, fn(module, module.exports), module.exports;
+    }
 
+    function commonjsRequire () {
+    	throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
+    }
+
+    var classnames = createCommonjsModule(function (module) {
     /*!
     	Copyright (c) 2018 Jed Watson.
     	Licensed under the MIT License (MIT), see
     	http://jedwatson.github.io/classnames
     */
+    /* global define */
 
-    (function (module) {
-    	/* global define */
+    (function () {
 
-    	(function () {
+    	var hasOwn = {}.hasOwnProperty;
 
-    		var hasOwn = {}.hasOwnProperty;
+    	function classNames() {
+    		var classes = [];
 
-    		function classNames() {
-    			var classes = [];
+    		for (var i = 0; i < arguments.length; i++) {
+    			var arg = arguments[i];
+    			if (!arg) continue;
 
-    			for (var i = 0; i < arguments.length; i++) {
-    				var arg = arguments[i];
-    				if (!arg) continue;
+    			var argType = typeof arg;
 
-    				var argType = typeof arg;
-
-    				if (argType === 'string' || argType === 'number') {
-    					classes.push(arg);
-    				} else if (Array.isArray(arg)) {
-    					if (arg.length) {
-    						var inner = classNames.apply(null, arg);
-    						if (inner) {
-    							classes.push(inner);
-    						}
+    			if (argType === 'string' || argType === 'number') {
+    				classes.push(arg);
+    			} else if (Array.isArray(arg)) {
+    				if (arg.length) {
+    					var inner = classNames.apply(null, arg);
+    					if (inner) {
+    						classes.push(inner);
     					}
-    				} else if (argType === 'object') {
-    					if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes('[native code]')) {
-    						classes.push(arg.toString());
-    						continue;
-    					}
+    				}
+    			} else if (argType === 'object') {
+    				if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes('[native code]')) {
+    					classes.push(arg.toString());
+    					continue;
+    				}
 
-    					for (var key in arg) {
-    						if (hasOwn.call(arg, key) && arg[key]) {
-    							classes.push(key);
-    						}
+    				for (var key in arg) {
+    					if (hasOwn.call(arg, key) && arg[key]) {
+    						classes.push(key);
     					}
     				}
     			}
-
-    			return classes.join(' ');
     		}
 
-    		if (module.exports) {
-    			classNames.default = classNames;
-    			module.exports = classNames;
-    		} else {
-    			window.classNames = classNames;
-    		}
-    	}());
-    } (classnames$1));
+    		return classes.join(' ');
+    	}
 
-    var classnames = classnamesExports;
+    	if (module.exports) {
+    		classNames.default = classNames;
+    		module.exports = classNames;
+    	} else {
+    		window.classNames = classNames;
+    	}
+    }());
+    });
 
     /**
      * lodash (Custom Build) <https://lodash.com/>

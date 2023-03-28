@@ -4,7 +4,10 @@
     (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Geosuggest = factory(global.React, global.classnames, global.debounce));
 })(this, (function (React, classnames, debounce) { 'use strict';
 
-    function _interopNamespaceDefault(e) {
+    function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+    function _interopNamespace(e) {
+        if (e && e.__esModule) return e;
         var n = Object.create(null);
         if (e) {
             Object.keys(e).forEach(function (k) {
@@ -17,13 +20,15 @@
                 }
             });
         }
-        n.default = e;
+        n["default"] = e;
         return Object.freeze(n);
     }
 
-    var React__namespace = /*#__PURE__*/_interopNamespaceDefault(React);
+    var React__namespace = /*#__PURE__*/_interopNamespace(React);
+    var classnames__default = /*#__PURE__*/_interopDefaultLegacy(classnames);
+    var debounce__default = /*#__PURE__*/_interopDefaultLegacy(debounce);
 
-    /******************************************************************************
+    /*! *****************************************************************************
     Copyright (c) Microsoft Corporation.
 
     Permission to use, copy, modify, and/or distribute this software for any
@@ -47,8 +52,6 @@
     };
 
     function __extends(d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -264,7 +267,7 @@
         Input.prototype.render = function () {
             var _this = this;
             var attributes = filterInputAttributes(this.props);
-            var classes = classnames('geosuggest__input', this.props.className);
+            var classes = classnames__default["default"]('geosuggest__input', this.props.className);
             var shouldRenderLabel = this.props.label && this.props.id;
             if (!attributes.tabIndex) {
                 attributes.tabIndex = 0;
@@ -391,7 +394,7 @@
             var _a;
             var _this = this;
             var suggest = this.props.suggest;
-            var classes = classnames('geosuggest__item', this.props.className, this.props.suggestItemClassName, { 'geosuggest__item--active': this.props.isActive }, (_a = {},
+            var classes = classnames__default["default"]('geosuggest__item', this.props.className, this.props.suggestItemClassName, { 'geosuggest__item--active': this.props.isActive }, (_a = {},
                 _a[this.props.activeClassName || ''] = this.props.activeClassName
                     ? this.props.isActive
                     : null,
@@ -439,7 +442,7 @@
         default_1.prototype.render = function () {
             var _a;
             var _this = this;
-            var classes = classnames('geosuggest__suggests', this.props.suggestsClassName, { 'geosuggest__suggests--hidden': this.isHidden() }, (_a = {},
+            var classes = classnames__default["default"]('geosuggest__suggests', this.props.suggestsClassName, { 'geosuggest__suggests--hidden': this.isHidden() }, (_a = {},
                 _a[this.props.hiddenClassName || ''] = this.props.hiddenClassName
                     ? this.isHidden()
                     : null,
@@ -517,7 +520,7 @@
             _this.selectSuggest = _this.selectSuggest.bind(_this);
             _this.listId = "geosuggest__list".concat(props.id ? "--".concat(props.id) : '');
             if (props.queryDelay) {
-                _this.onAfterInputChange = debounce(_this.onAfterInputChange, props.queryDelay);
+                _this.onAfterInputChange = debounce__default["default"](_this.onAfterInputChange, props.queryDelay);
             }
             return _this;
         }
@@ -919,7 +922,7 @@
         default_1.prototype.render = function () {
             var _this = this;
             var attributes = filterInputAttributes(this.props);
-            var classes = classnames('geosuggest', this.props.className, {
+            var classes = classnames__default["default"]('geosuggest', this.props.className, {
                 'geosuggest--loading': this.state.isLoading
             });
             var input = (React__namespace.createElement(Input, __assign({ className: this.props.inputClassName, ref: function (i) { return (_this.input = i); }, value: this.state.userInput, doNotSubmitOnEnter: !this.state.isSuggestsHidden, ignoreTab: this.props.ignoreTab, ignoreEnter: this.props.ignoreEnter, style: this.props.style && this.props.style.input, onChange: this.onInputChange, onFocus: this.onInputFocus, onBlur: this.onInputBlur, onKeyDown: this.props.onKeyDown, onKeyPress: this.props.onKeyPress, inputType: this.props.inputType, onNext: this.onNext, onPrev: this.onPrev, onSelect: this.onSelect, onEscape: this.hideSuggests, isSuggestsHidden: this.state.isSuggestsHidden, activeSuggest: this.state.activeSuggest, label: this.props.label, id: this.props.id, listId: this.listId }, attributes)));
