@@ -1,3 +1,5 @@
+# ONLY FOR BUILD BRANCH
+tsconfig.json
 # Logs
 logs
 *.log
